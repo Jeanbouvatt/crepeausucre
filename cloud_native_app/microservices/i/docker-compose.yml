@@ -1,6 +1,6 @@
 version: "2"
 services:
-    w:
+    i:
         build:
             context: .
         ports:
