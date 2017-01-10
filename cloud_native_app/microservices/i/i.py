@@ -11,7 +11,7 @@ import pprint
 import time
 import sys
 import os
-import sqlite3
+import mysql.connector 
 from flask import Flask
 from flask import jsonify
 from flask import request
@@ -31,12 +31,30 @@ def api_login(id):
     """Check if user <id> is registered"""
     config.logger.info("*** Start processing id %s ***", id)
 
-    # TODO
+    mysql_connector = mysql.connector.connect(host=config.i.conf_file.get_sql_hostname(), \
+                                             user=config.i.conf_file.get_sql_username(), \
+                                             password=config.i.conf_file.get_sql_password(), \
+                                             database=config.i.conf_file.get_sql_database())
 
-    data = {"msg": "ok"}
-    resp = jsonify(data)
-    resp.status_code = 200
-    config.logger.info("*** End processing id %s ***", id)
+    cursor = mysql_connector.cursor()
+
+    cursor.execute("SELECT COUNT(*) FROM users WHERE users.id = " + str(id))
+    response = cursor.fetchall()
+    if response[0][0] == 1:
+        config.logger.info("*** %s is in the database ***", id)
+        data = {"msg": "ok"}
+        resp = jsonify(data)
+        resp.status_code = 200
+    else:
+        config.logger.info("*** %s is unknown ***", id)
+        data = {"msg": "pas ok"}
+        resp = jsonify(data)
+        resp.status_code = 401
+
+    cursor.close()
+    mysql_connector.close()
+
+    config.logger.info("*** End processing id %s ***", id)        
     add_headers(resp)
     return resp
 

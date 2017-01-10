@@ -1,6 +1,7 @@
 # coding=utf-8
 
 import configparser
+import mysql.connector 
 
 # Initialise global variable
 logger = None
@@ -20,6 +21,10 @@ class I(object):
         #
         # Configuration file
         self.conf_file = iConfiguration("i.conf")
+        #self.mysql = mysql.connector.connect(host=self.conf_file.get_sql_hostname(), \
+         #                                    user=self.conf_file.get_sql_username(), \
+         #                                    password=self.conf_file.get_sql_password(), \
+          #                                   database=self.conf_file.get_sql_database())
 
 
 class iConfiguration(object):
@@ -30,6 +35,18 @@ class iConfiguration(object):
 
     def get_i_port(self):
         return self.config.get("i", "port")
+
+    def get_sql_hostname(self):
+        return self.config.get("sql", "hostname")
+
+    def get_sql_username(self):
+        return self.config.get("sql", "username")
+
+    def get_sql_password(self):
+        return self.config.get("sql", "password")
+
+    def get_sql_database(self):
+        return self.config.get("sql", "database")
 
     def get_i_debug(self):
         return self.config.get("i", "debug")
