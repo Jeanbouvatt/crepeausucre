@@ -1,0 +1,8 @@
+$ cd cloud_native_app/microservices/b
+$ docker build -t microservice_b .
+
+Lancer et supprimer l'image après, et allouer un terminal, et binder le port 8093. 
+$ docker run --rm -it -p 8093:8093 microservice_b
+
+Tester le microservice b
+http://0.0.0.0:8090/get_button/my_id
