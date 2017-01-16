@@ -11,7 +11,7 @@ import pprint
 import time
 import sys
 import os
-import mysql.connector 
+import sqlite3
 from flask import Flask
 from flask import jsonify
 from flask import request

@@ -1,13 +1,12 @@
 FROM debian:jessie
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
-apt-get install -y python3 python3-flask
+apt-get install -y python3 python3-flask python3-requests
 RUN apt-get install -y imagemagick
-RUN useradd w
-COPY config.py w.conf w.py /home/w/
-COPY prices /home/w/prices/
-RUN chown -R w:w /home/w/
+RUN useradd s
+COPY config.py s.conf s.py /home/s/
+RUN chown -R s:s /home/s/
 EXPOSE 8090
-USER w
-WORKDIR /home/w
-CMD ["./w.py"]
+USER s
+WORKDIR /home/s
+CMD ["./s.py"]

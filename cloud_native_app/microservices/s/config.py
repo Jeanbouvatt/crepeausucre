@@ -1,7 +1,6 @@
 # coding=utf-8
 
 import configparser
-import mysql.connector 
 
 # Initialise global variable
 logger = None
