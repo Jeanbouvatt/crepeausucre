@@ -6,6 +6,6 @@ RUN apt-get install -y imagemagick
 RUN useradd i
 COPY config.py i.conf i.py /home/i/
 RUN chown -R i:i /home/i/
-EXPOSE 8090
+EXPOSE 8091
 USER i
 WORKDIR /home/i

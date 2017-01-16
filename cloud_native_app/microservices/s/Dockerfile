@@ -6,7 +6,7 @@ RUN apt-get install -y imagemagick
 RUN useradd s
 COPY config.py s.conf s.py /home/s/
 RUN chown -R s:s /home/s/
-EXPOSE 8090
+EXPOSE 8092
 USER s
 WORKDIR /home/s
 CMD ["./s.py"]
