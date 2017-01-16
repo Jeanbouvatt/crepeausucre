@@ -26,56 +26,78 @@ config.logger = app.logger
 
 
 @app.route("/get_status/<id>")
-def api_login(id):
+def get_status(id):
 
-    """Check if user <id> is registered"""
-    config.logger.info("*** Start processing get_status id %s ***", id)
+    try:
+        config.logger.info("*** Start processing id %s ***", id)
 
-    mysql_connector = mysql.connector.connect(host=config.s.conf_file.get_sql_hostname(), \
-                                             user=config.s.conf_file.get_sql_username(), \
-                                             password=config.s.conf_file.get_sql_password(), \
-                                             database=config.s.conf_file.get_sql_database())
+        conn = sqlite3.connect('database.db')
+        c = conn.cursor()
 
-    cursor = mysql_connector.cursor()
+        response = [[0]]
 
-    cursor.execute("SELECT played FROM users WHERE users.id = " + str(id))
-    response = cursor.fetchall()
+        try:
+            c.execute("CREATE TABLE played (id INT)")
+        except:
+            pass
 
-    data = {"played": response[0][0]}
-    resp = jsonify(data)
-    resp.status_code = 200
+        c.execute("SELECT COUNT(*) FROM played WHERE played.id = " + str(id))
+        response = c.fetchall()
 
-    cursor.close()
-    mysql_connector.close()
-    config.logger.info("*** End processing id %s ***", id)        
-    add_headers(resp)
-    return resp
+        if response[0][0] == 1:
+            config.logger.info("*** %s already played ***", id)
+            data = {"msg": "déjà joué"}
+            resp = jsonify(data)
+            resp.status_code = 401
+        else:
+            config.logger.info("*** %s has not played yet ***", id)
+            data = {"msg": "Pas encore joué"}
+            resp = jsonify(data)
+            resp.status_code = 200
+
+        conn.commit()
+        conn.close()
+
+        config.logger.info("*** End processing id %s ***", id)        
+        add_headers(resp)
+        return resp
+    except:
+        resp = jsonify({"msg": "bug"})
+        resp.status_code = 500
+        return resp
 
 @app.route("/set_status/<id>")
-def api_login(id):
+def set_status(id):
 
     """Set the status of <id> to 'have already played'"""
     config.logger.info("*** Start processing set_status id %s ***", id)
+    try:
 
-    mysql_connector = mysql.connector.connect(host=config.s.conf_file.get_sql_hostname(), \
-                                             user=config.s.conf_file.get_sql_username(), \
-                                             password=config.s.conf_file.get_sql_password(), \
-                                             database=config.s.conf_file.get_sql_database())
+        config.logger.info("*** Start processing id %s ***", id)
 
-    cursor = mysql_connector.cursor()
+        conn = sqlite3.connect('database.db')
+        c = conn.cursor()
 
-    cursor.execute("UPDATE users SET played=1 WHERE users.id = " + str(id))
-    response = cursor.fetchall()
+        response = [[0]]
 
-    data = {"msg": "ok"}
-    resp = jsonify(data)
-    resp.status_code = 200
+        try:
+            c.execute("CREATE TABLE played (id INT)")
+        except:
+            pass
 
-    cursor.close()
-    mysql_connector.close()    
-    config.logger.info("*** End processing id %s ***", id)         
-    add_headers(resp)
-    return resp
+        c.execute("INSERT INTO played VALUES (1))")
+        response = c.fetchall()
+        conn.commit()
+        conn.close()
+        resp = jsonify({"msg":"set status to 1 ok"})
+        resp.status_code = 200
+        config.logger.info("*** End processing id %s ***", id)        
+        add_headers(resp)
+        return resp
+    except:
+        resp = jsonify({"msg": "bug"})
+        resp.status_code = 500
+        return resp
 
 
 @app.route("/shutdown", methods=["POST"])
