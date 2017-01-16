@@ -68,11 +68,6 @@ def get_status(id):
 
 @app.route("/set_status/<id>")
 def set_status(id):
-
-    """Set the status of <id> to 'have already played'"""
-    config.logger.info("*** Start processing set_status id %s ***", id)
-    try:
-
         config.logger.info("*** Start processing id %s ***", id)
 
         conn = sqlite3.connect('database.db')
@@ -85,7 +80,7 @@ def set_status(id):
         except:
             pass
 
-        c.execute("INSERT INTO played VALUES (1))")
+        c.execute("INSERT INTO played VALUES (" + str(id) + ")")
         response = c.fetchall()
         conn.commit()
         conn.close()
@@ -94,10 +89,7 @@ def set_status(id):
         config.logger.info("*** End processing id %s ***", id)        
         add_headers(resp)
         return resp
-    except:
-        resp = jsonify({"msg": "bug"})
-        resp.status_code = 500
-        return resp
+
 
 
 @app.route("/shutdown", methods=["POST"])
@@ -167,7 +159,7 @@ if __name__ == "__main__":
     pp = pprint.PrettyPrinter(indent=4)
 
     # Initialise apps
-    config.initialise_i()
+    config.initialise_s()
 
     # Configure Flask logger
     configure_logger(app.logger, app_logfile)

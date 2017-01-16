@@ -22,7 +22,7 @@ class S(object):
         self.conf_file = sConfiguration("s.conf")
 
 
-class iConfiguration(object):
+class sConfiguration(object):
 
     def __init__(self, configuration_file):
         self.config = configparser.ConfigParser(allow_no_value=True)

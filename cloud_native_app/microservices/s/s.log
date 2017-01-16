@@ -1,0 +1,57 @@
+2017-01-16 12:09:50,640 :: INFO :: Starting Microservice s
+2017-01-16 12:09:50,766 :: INFO :: Starting Microservice s
+2017-01-16 12:10:01,705 :: INFO :: *** Start processing id 4 ***
+2017-01-16 12:10:01,985 :: INFO :: *** 4 has not played yet ***
+2017-01-16 12:10:01,986 :: INFO :: *** End processing id 4 ***
+2017-01-16 12:10:03,630 :: INFO :: *** Start processing id 4 ***
+2017-01-16 12:10:03,630 :: INFO :: *** 4 has not played yet ***
+2017-01-16 12:10:03,631 :: INFO :: *** End processing id 4 ***
+2017-01-16 12:10:07,660 :: INFO :: *** Start processing set_status id 4 ***
+2017-01-16 12:10:07,660 :: INFO :: *** Start processing id 4 ***
+2017-01-16 12:11:06,317 :: INFO :: Starting Microservice s
+2017-01-16 12:11:06,441 :: INFO :: Starting Microservice s
+2017-01-16 12:11:09,101 :: INFO :: *** Start processing id 4 ***
+2017-01-16 12:11:16,638 :: INFO :: Starting Microservice s
+2017-01-16 12:11:18,401 :: INFO :: *** Start processing id 4 ***
+2017-01-16 12:11:18,495 :: INFO :: *** End processing id 4 ***
+2017-01-16 12:11:21,969 :: INFO :: *** Start processing id 4 ***
+2017-01-16 12:11:21,970 :: INFO :: *** 4 has not played yet ***
+2017-01-16 12:11:21,970 :: INFO :: *** End processing id 4 ***
+2017-01-16 12:11:24,066 :: INFO :: *** Start processing id 4 ***
+2017-01-16 12:11:24,066 :: INFO :: *** 4 has not played yet ***
+2017-01-16 12:11:24,067 :: INFO :: *** End processing id 4 ***
+2017-01-16 12:11:24,866 :: INFO :: *** Start processing id 4 ***
+2017-01-16 12:11:24,866 :: INFO :: *** 4 has not played yet ***
+2017-01-16 12:11:24,867 :: INFO :: *** End processing id 4 ***
+2017-01-16 12:11:28,362 :: INFO :: *** Start processing id 4 ***
+2017-01-16 12:11:28,580 :: INFO :: *** End processing id 4 ***
+2017-01-16 12:11:30,668 :: INFO :: *** Start processing id 4 ***
+2017-01-16 12:11:30,716 :: INFO :: *** End processing id 4 ***
+2017-01-16 12:11:34,364 :: INFO :: *** Start processing id 4 ***
+2017-01-16 12:11:34,366 :: INFO :: *** 4 has not played yet ***
+2017-01-16 12:11:34,366 :: INFO :: *** End processing id 4 ***
+2017-01-16 12:11:47,895 :: INFO :: Starting Microservice s
+2017-01-16 12:11:52,005 :: INFO :: *** Start processing id 4 ***
+2017-01-16 12:11:52,006 :: INFO :: *** 4 has not played yet ***
+2017-01-16 12:11:52,007 :: INFO :: *** End processing id 4 ***
+2017-01-16 12:11:54,596 :: INFO :: *** Start processing id 4 ***
+2017-01-16 12:11:54,788 :: INFO :: *** End processing id 4 ***
+2017-01-16 12:11:57,995 :: INFO :: *** Start processing id 4 ***
+2017-01-16 12:11:57,995 :: INFO :: *** 4 already played ***
+2017-01-16 12:11:57,995 :: INFO :: *** End processing id 4 ***
+2017-01-16 12:12:02,022 :: INFO :: *** Start processing id 1 ***
+2017-01-16 12:12:02,023 :: INFO :: *** 1 has not played yet ***
+2017-01-16 12:12:02,024 :: INFO :: *** End processing id 1 ***
+2017-01-16 12:12:03,909 :: INFO :: *** Start processing id 2 ***
+2017-01-16 12:12:03,910 :: INFO :: *** 2 has not played yet ***
+2017-01-16 12:12:03,910 :: INFO :: *** End processing id 2 ***
+2017-01-16 12:12:06,214 :: INFO :: *** Start processing id 4 ***
+2017-01-16 12:12:06,215 :: INFO :: *** 4 already played ***
+2017-01-16 12:12:06,215 :: INFO :: *** End processing id 4 ***
+2017-01-16 12:12:10,213 :: INFO :: *** Start processing id 4 ***
+2017-01-16 12:12:10,304 :: INFO :: *** End processing id 4 ***
+2017-01-16 12:12:12,353 :: INFO :: *** Start processing id 17 ***
+2017-01-16 12:12:12,501 :: INFO :: *** End processing id 17 ***
+2017-01-16 12:12:17,172 :: INFO :: *** Start processing id 17 ***
+2017-01-16 12:12:17,173 :: INFO :: *** 17 already played ***
+2017-01-16 12:12:17,173 :: INFO :: *** End processing id 17 ***
