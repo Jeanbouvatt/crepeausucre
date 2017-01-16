@@ -1,0 +1,8 @@
+$ cd cloud_native_app/frontend
+$ docker build -t frontend .
+
+Lancer et supprimer l'image après, et allouer un terminal, et binder le port 8090. 
+$ docker run --rm -it -p 8090:8090 frontend
+
+Tester le frontend
+http://0.0.0.0:8090/

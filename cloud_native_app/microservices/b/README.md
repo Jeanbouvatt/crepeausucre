@@ -48,10 +48,7 @@ Return status 200 if authenticated user, else 401
 
 ```json
 {
-    "id":id
-    "firstname":firstname
-    "lastname":lastname
-    "email":email
+    "msg":"ok"
 }
 ```
 

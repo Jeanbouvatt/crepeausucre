@@ -11,7 +11,8 @@ import pprint
 import time
 import sys
 import os
-import sqlite3 
+import requests
+import mysql.connector 
 from flask import Flask
 from flask import jsonify
 from flask import request
@@ -25,54 +26,48 @@ app.debug = True
 config.logger = app.logger
 
 
-@app.route("/login/<id>")
+@app.route("/<id>")
 def api_login(id):
 
+    """Check if user <id> is registered"""
+    config.logger.info("*** Start processing id %s ***", id)
+
+    html_result = ""
+
+    # Get i
     try:
-        """Check if user <id> is registered"""
-        config.logger.info("*** Start processing id %s ***", id)
-
-        conn = sqlite3.connect('database.db')
-        c = conn.cursor()
-
-        response = [[0]]
-
-        try:
-            c.execute("CREATE TABLE users (id INT, nom TEXT, email TEXT)")
-        except:
-            pass
-
-        c.execute("SELECT COUNT(*) FROM users WHERE users.id = " + str(id))
-        response = c.fetchall()
-
-        if response[0][0] == 1:
-            config.logger.info("*** %s is in the database ***", id)
-            data = {"msg": "ok"}
-            resp = jsonify(data)
-            resp.status_code = 200
+        r = requests.get("http://localhost:8091/login/"+str(id))
+        if r.status_code == 200:
+            html_result += "<p>Bienvenue from I</p>"
         else:
-            config.logger.info("*** %s is unknown ***", id)
-            data = {"msg": "pas ok"}
-            resp = jsonify(data)
-            resp.status_code = 401
-
-        conn.commit()
-        conn.close()
-
-        config.logger.info("*** End processing id %s ***", id)        
-        add_headers(resp)
-        return resp
+            html_result += "<p>Unknown user</p>"
     except:
-        resp = jsonify({"msg": "bug"})
-        resp.status_code = 500
-        return resp
+        html_result += "<p>I not responding</p>"
+
+    # Get s
+    try:
+        r = requests.get("http://localhost:8092/status/"+str(id))
+        if r.status_code == 200:
+            html_result += "<p>You haven't played already</p>"
+        else:
+            html_result += "<p>You have already played</p>"
+    except:
+        html_result += "<p>S not responding</p>"
+
+    # Get b
+    try:
+        r = requests.get("http://localhost:8093/button"+str(id))
+        if r.status_code == 200:
+            html_result += ""
+
+    return html_result
 
 
 @app.route("/shutdown", methods=["POST"])
 def shutdown():
     """Shutdown server"""
     shutdown_server()
-    config.logger.info("Stopping %s...", config.i.NAME)
+    config.logger.info("Stopping %s...", config.frontend.NAME)
     return "Server shutting down..."
 
 
@@ -80,8 +75,8 @@ def shutdown():
 def api_root():
     """Root url, provide service name and version"""
     data = {
-        "Service": config.i.NAME,
-        "Version": config.i.VERSION
+        "Service": config.frontend.NAME,
+        "Version": config.frontend.VERSION
     }
 
     resp = jsonify(data)
@@ -107,7 +102,7 @@ def configure_logger(logger, logfile):
     file_handler = RotatingFileHandler(logfile, "a", 1000000, 1)
 
     # Add logger to file
-    if (config.i.conf_file.get_i_debug().title() == 'True'):
+    if (config.frontend.conf_file.get_debug().title() == 'True'):
         logger.setLevel(logging.DEBUG)
     else:
         logger.setLevel(logging.INFO)
@@ -123,7 +118,7 @@ def add_headers(response):
 
 if __name__ == "__main__":
     # Vars
-    app_logfile = "i.log"
+    app_logfile = "frontend.log"
 
     # Change diretory to script one
     try:
@@ -135,10 +130,10 @@ if __name__ == "__main__":
     pp = pprint.PrettyPrinter(indent=4)
 
     # Initialise apps
-    config.initialise_i()
+    config.initialise_frontend()
 
     # Configure Flask logger
     configure_logger(app.logger, app_logfile)
 
-    config.logger.info("Starting %s", config.i.NAME)
-    app.run(port=int(config.i.conf_file.get_i_port()), host='0.0.0.0')
+    config.logger.info("Starting %s", config.frontend.NAME)
+    app.run(port=int(config.frontend.conf_file.get_port()), host='0.0.0.0')

@@ -104,3 +104,119 @@
 2017-01-10 16:57:02,853 :: INFO :: *** Start processing id 4 ***
 2017-01-10 16:57:02,854 :: INFO :: *** 4 is in the database ***
 2017-01-10 16:57:02,855 :: INFO :: *** End processing id 4 ***
+2017-01-16 11:23:59,101 :: INFO :: Starting Microservice i
+2017-01-16 11:23:59,232 :: INFO :: Starting Microservice i
+2017-01-16 11:24:04,807 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:24:04,956 :: INFO :: *** Start processing id favicon.ico ***
+2017-01-16 11:37:46,191 :: INFO :: Starting Microservice i
+2017-01-16 11:37:46,327 :: INFO :: Starting Microservice i
+2017-01-16 11:38:00,201 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:41:14,696 :: INFO :: Starting Microservice i
+2017-01-16 11:41:14,830 :: INFO :: Starting Microservice i
+2017-01-16 11:41:19,491 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:41:39,109 :: INFO :: Starting Microservice i
+2017-01-16 11:41:44,299 :: INFO :: Starting Microservice i
+2017-01-16 11:41:53,532 :: INFO :: Starting Microservice i
+2017-01-16 11:41:55,719 :: INFO :: Starting Microservice i
+2017-01-16 11:42:00,578 :: INFO :: Starting Microservice i
+2017-01-16 11:42:00,713 :: INFO :: Starting Microservice i
+2017-01-16 11:42:04,139 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:43:26,045 :: INFO :: Starting Microservice i
+2017-01-16 11:43:26,179 :: INFO :: Starting Microservice i
+2017-01-16 11:43:28,396 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:43:28,488 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:43:28,489 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:43:30,466 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:44:03,490 :: INFO :: Starting Microservice i
+2017-01-16 11:44:08,163 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:44:08,163 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:44:08,163 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:44:09,073 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:44:09,074 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:44:09,074 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:44:09,897 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:44:09,898 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:44:09,898 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:44:10,636 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:44:10,637 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:44:10,637 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:44:18,708 :: INFO :: Starting Microservice i
+2017-01-16 11:44:22,028 :: INFO :: Starting Microservice i
+2017-01-16 11:44:22,162 :: INFO :: Starting Microservice i
+2017-01-16 11:44:25,411 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:44:25,412 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:44:25,412 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:44:26,214 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:44:26,215 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:44:26,215 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:45:25,331 :: INFO :: Starting Microservice i
+2017-01-16 11:45:25,466 :: INFO :: Starting Microservice i
+2017-01-16 11:45:26,433 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:45:26,434 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:45:26,434 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:45:29,332 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:45:29,333 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:45:29,333 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:45:30,400 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:45:30,400 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:45:30,400 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:45:33,187 :: INFO :: *** Start processing id 2 ***
+2017-01-16 11:45:33,188 :: INFO :: *** 2 is unknown ***
+2017-01-16 11:45:33,188 :: INFO :: *** End processing id 2 ***
+2017-01-16 11:47:13,359 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:47:13,359 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:47:13,360 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:47:14,628 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:47:14,629 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:47:14,629 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:47:55,238 :: INFO :: Starting Microservice i
+2017-01-16 11:47:57,860 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:47:57,861 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:47:57,862 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:47:58,677 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:47:58,677 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:47:58,678 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:48:21,988 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:48:21,988 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:48:21,989 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:48:22,831 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:48:22,832 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:48:22,832 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:49:27,830 :: INFO :: Starting Microservice i
+2017-01-16 11:50:05,146 :: INFO :: Starting Microservice i
+2017-01-16 11:50:33,455 :: INFO :: Starting Microservice i
+2017-01-16 11:50:40,656 :: INFO :: Starting Microservice i
+2017-01-16 11:50:40,793 :: INFO :: Starting Microservice i
+2017-01-16 11:50:44,619 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:50:44,620 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:50:44,620 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:51:11,080 :: INFO :: Starting Microservice i
+2017-01-16 11:52:19,851 :: INFO :: Starting Microservice i
+2017-01-16 11:52:19,986 :: INFO :: Starting Microservice i
+2017-01-16 11:52:22,601 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:52:26,632 :: INFO :: *** Start processing id 2 ***
+2017-01-16 11:52:38,212 :: INFO :: Starting Microservice i
+2017-01-16 11:52:44,213 :: INFO :: *** Start processing id 2 ***
+2017-01-16 11:52:52,430 :: INFO :: Starting Microservice i
+2017-01-16 11:52:55,651 :: INFO :: *** Start processing id 2 ***
+2017-01-16 11:52:55,651 :: INFO :: *** 2 is unknown ***
+2017-01-16 11:52:55,652 :: INFO :: *** End processing id 2 ***
+2017-01-16 11:52:58,721 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:52:58,722 :: INFO :: *** 1 is in the database ***
+2017-01-16 11:52:58,722 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:53:07,650 :: INFO :: Starting Microservice i
+2017-01-16 11:53:09,453 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:53:09,453 :: INFO :: *** 1 is in the database ***
+2017-01-16 11:53:09,454 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:53:11,931 :: INFO :: *** Start processing id 2 ***
+2017-01-16 11:53:11,931 :: INFO :: *** 2 is unknown ***
+2017-01-16 11:53:11,932 :: INFO :: *** End processing id 2 ***
+2017-01-16 11:53:31,925 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:53:32,055 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:53:32,055 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:53:33,415 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:53:33,415 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:53:33,416 :: INFO :: *** End processing id 1 ***
+2017-01-16 11:53:34,076 :: INFO :: *** Start processing id 1 ***
+2017-01-16 11:53:34,076 :: INFO :: *** 1 is unknown ***
+2017-01-16 11:53:34,077 :: INFO :: *** End processing id 1 ***

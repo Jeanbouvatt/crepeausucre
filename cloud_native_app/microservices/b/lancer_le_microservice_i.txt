@@ -1,4 +1,4 @@
-$ cd cloud_native_app/microservices/i
+$ cd cloud_native_app/microservices/w
 $ docker build -t microservice_i .
 
 Lancer et supprimer l'image après, et allouer un terminal, et binder le port 8090. 

@@ -1,0 +1,13 @@
+[Unit]
+Description=cna service frontend
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/home/frontend/frontend.py
+ExecReload=/bin/kill -HUP $MAINPID
+KillSignal=SIGINT
+User=frontend
+
+[Install]
+WantedBy=multi-user.target

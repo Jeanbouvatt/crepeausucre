@@ -11,7 +11,7 @@ import pprint
 import time
 import sys
 import os
-import sqlite3 
+import mysql.connector 
 from flask import Flask
 from flask import jsonify
 from flask import request
@@ -28,44 +28,35 @@ config.logger = app.logger
 @app.route("/login/<id>")
 def api_login(id):
 
-    try:
-        """Check if user <id> is registered"""
-        config.logger.info("*** Start processing id %s ***", id)
+    """Check if user <id> is registered"""
+    config.logger.info("*** Start processing id %s ***", id)
 
-        conn = sqlite3.connect('database.db')
-        c = conn.cursor()
+    mysql_connector = mysql.connector.connect(host=config.i.conf_file.get_sql_hostname(), \
+                                             user=config.i.conf_file.get_sql_username(), \
+                                             password=config.i.conf_file.get_sql_password(), \
+                                             database=config.i.conf_file.get_sql_database())
 
-        response = [[0]]
+    cursor = mysql_connector.cursor()
 
-        try:
-            c.execute("CREATE TABLE users (id INT, nom TEXT, email TEXT)")
-        except:
-            pass
+    cursor.execute("SELECT COUNT(*) FROM users WHERE users.id = " + str(id))
+    response = cursor.fetchall()
+    if response[0][0] == 1:
+        config.logger.info("*** %s is in the database ***", id)
+        data = {"msg": "ok"}
+        resp = jsonify(data)
+        resp.status_code = 200
+    else:
+        config.logger.info("*** %s is unknown ***", id)
+        data = {"msg": "pas ok"}
+        resp = jsonify(data)
+        resp.status_code = 401
 
-        c.execute("SELECT COUNT(*) FROM users WHERE users.id = " + str(id))
-        response = c.fetchall()
+    cursor.close()
+    mysql_connector.close()
 
-        if response[0][0] == 1:
-            config.logger.info("*** %s is in the database ***", id)
-            data = {"msg": "ok"}
-            resp = jsonify(data)
-            resp.status_code = 200
-        else:
-            config.logger.info("*** %s is unknown ***", id)
-            data = {"msg": "pas ok"}
-            resp = jsonify(data)
-            resp.status_code = 401
-
-        conn.commit()
-        conn.close()
-
-        config.logger.info("*** End processing id %s ***", id)        
-        add_headers(resp)
-        return resp
-    except:
-        resp = jsonify({"msg": "bug"})
-        resp.status_code = 500
-        return resp
+    config.logger.info("*** End processing id %s ***", id)        
+    add_headers(resp)
+    return resp
 
 
 @app.route("/shutdown", methods=["POST"])
