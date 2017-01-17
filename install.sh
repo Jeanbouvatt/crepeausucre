@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 source ./openrc.sh
 echo $1
-FLAVOR="m1.tiny"
+FLAVOR="m1.small"
 NIC="net-id=a992853b-b9cf-42c7-9b7e-e3e8fecd58fb"
 IMAGE=ubuntu1604
 KEY_NAME="KEY_NAME"
@@ -19,6 +19,13 @@ openstack server create --flavor $FLAVOR --image $IMAGE --nic $NIC --security-gr
 openstack server create --flavor $FLAVOR --image $IMAGE --nic $NIC --security-group $SECURITY frontend --key-name $KEY_NAME
 DIR="cloud_native_app/microservices"
 #TODO retrieve IP address from i s b w p frontend
+sleep 10
+IP_I= openstack server list | grep sub_i | cut -d = -f 2
+IP_S= openstack server list | grep sub_s | cut -d = -f 2
+IP_B= openstack server list | grep sub_b | cut -d = -f 2
+IP_W= openstack server list | grep sub_w | cut -d = -f 2
+IP_P= openstack server list | grep sub_p | cut -d = -f 2
+
 scp -i MY_KEY.pem -r $DIR/i $IMAGE@$IP_I
 scp -i MY_KEY.pem -r $DIR/s $IMAGE@$IP_S
 scp -i MY_KEY.pem -r $DIR/b $IMAGE@$IP_B
