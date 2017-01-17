@@ -1,0 +1,8 @@
+$ cd cloud_native_app/microservices/p
+$ docker build -t microservice_p .
+
+Lancer et supprimer l'image après, et allouer un terminal, et binder le port 8094. 
+$ docker run --rm -it -p 8094:8094 microservice_p
+
+Tester le microservice p
+http://0.0.0.0:8094/play/my_id
