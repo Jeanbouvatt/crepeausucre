@@ -41,17 +41,17 @@ def get_status(id):
         except:
             pass
 
-        c.execute("SELECT COUNT(*) FROM played WHERE played.id = " + str(id))
-        response = c.fetchall()
+        c.execute("SELECT * FROM played WHERE played.id = " + str(id))
+        response = c.fetchone()
 
-        if response[0][0] == 1:
+        if response != None:
             config.logger.info("*** %s already played ***", id)
-            data = {"msg": "déjà joué"}
+            data = {"msg": "deja joue"}
             resp = jsonify(data)
             resp.status_code = 401
         else:
             config.logger.info("*** %s has not played yet ***", id)
-            data = {"msg": "Pas encore joué"}
+            data = {"msg": "Pas encore joue"}
             resp = jsonify(data)
             resp.status_code = 200
 
@@ -68,6 +68,7 @@ def get_status(id):
 
 @app.route("/set_status/<id>")
 def set_status(id):
+    try:
         config.logger.info("*** Start processing id %s ***", id)
 
         conn = sqlite3.connect('database.db')
@@ -89,6 +90,11 @@ def set_status(id):
         config.logger.info("*** End processing id %s ***", id)        
         add_headers(resp)
         return resp
+    except:        
+        resp = jsonify({"msg": "bug"})
+        resp.status_code = 500
+        return resp
+
 
 
 
