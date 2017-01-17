@@ -32,3 +32,15 @@ class bConfiguration(object):
 
     def get_b_debug(self):
         return self.config.get("b", "debug")
+
+    def get_w_protocol(self):
+        return self.config.get("wlink", "protocol")
+
+    def get_w_hostname(self):
+        return self.config.get("wlink", "hostname")
+
+    def get_w_port(self):
+        return self.config.get("wlink", "port")
+        
+    def get_w_route(self):
+        return self.config.get("wlink", "route")

@@ -28,10 +28,10 @@ config.logger = app.logger
 def get_button(id):
 
     try:
-        """Check if user <id> is registered"""
         config.logger.info("*** Start processing id %s ***", id)
 
-        data = {"msg": "ok", "html":"TODO (in b.py)"}
+        data = {"msg": "ok", "html":config.b.conf_file.get_w_protocol()+"://"+config.b.conf_file.get_w_hostname()+\
+                                    ":" + config.b.conf_file.get_w_port() + "/" + config.b.conf_file.get_w_route() + "/" + str(id)}
         resp = jsonify(data)
         resp.status_code = 200
 

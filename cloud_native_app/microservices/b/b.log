@@ -108,3 +108,17 @@
 2017-01-16 12:21:37,749 :: INFO :: Starting Microservice b
 2017-01-16 12:21:52,673 :: INFO :: *** Start processing id 45 ***
 2017-01-16 12:21:52,674 :: INFO :: *** End processing id 45 ***
+2017-01-17 12:06:05,958 :: INFO :: Starting Microservice b
+2017-01-17 12:06:06,083 :: INFO :: Starting Microservice b
+2017-01-17 12:06:16,436 :: INFO :: *** Start processing id 45 ***
+2017-01-17 12:06:16,437 :: INFO :: *** End processing id 45 ***
+2017-01-17 12:06:44,248 :: INFO :: *** Start processing id 45 ***
+2017-01-17 12:06:44,248 :: INFO :: *** End processing id 45 ***
+2017-01-17 12:06:45,086 :: INFO :: *** Start processing id 45 ***
+2017-01-17 12:06:45,087 :: INFO :: *** End processing id 45 ***
+2017-01-17 12:06:45,965 :: INFO :: *** Start processing id 45 ***
+2017-01-17 12:06:45,965 :: INFO :: *** End processing id 45 ***
+2017-01-17 12:06:49,529 :: INFO :: Starting Microservice b
+2017-01-17 12:06:49,653 :: INFO :: Starting Microservice b
+2017-01-17 12:06:52,080 :: INFO :: *** Start processing id 45 ***
+2017-01-17 12:06:52,080 :: INFO :: *** End processing id 45 ***
