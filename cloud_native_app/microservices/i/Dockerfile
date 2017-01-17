@@ -9,3 +9,4 @@ RUN chown -R i:i /home/i/
 EXPOSE 8091
 USER i
 WORKDIR /home/i
+CMD ["./i.py"]
