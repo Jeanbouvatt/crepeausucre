@@ -1,7 +1,7 @@
 var url = 'http://0.0.0.0'
 
 var check = function(id) {
-  $.get(url + ':8091/link/' + id)
+  $.get(url + ':8091/login/' + id)
   .done(function(data) {
     console.log(data);
   })
@@ -12,10 +12,22 @@ var check = function(id) {
 }
 
 var get_link = function(id) {
-  $.get(url + ':8092/get_button/' + id)
+  $.get(url + ':8093/get_button/' + id)
   .done(function(data) {
     console.log(data);
-    $("#play_link").html('<a href="' + link + '">Cliquez ici pour jouer !</a>');
+    $("#play_link").html('<a href="' + data.html + '">Cliquez ici pour jouer !</a>');
+  })
+  .fail(function(error) {
+    console.log(error);
+    $('#play_link').html('Erreur lors de la récupération des informations : <pre>' + error.statusText + '</pre>');
+  });
+}
+
+var get_link = function(id) {
+  $.get(url + ':8093/get_button/' + id)
+  .done(function(data) {
+    console.log(data);
+    $("#play_link").html('<a href="' + data.html + '">Cliquez ici pour jouer !</a>');
   })
   .fail(function(error) {
     console.log(error);
