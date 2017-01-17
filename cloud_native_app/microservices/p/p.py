@@ -9,7 +9,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 import pprint
 import os
-import random
+import sqlite3 
 import time
 import subprocess
 import sys
@@ -26,57 +26,62 @@ app.debug = True
 config.logger = app.logger
 
 
-@app.route("/play/<id>")
-def api_play(id):
-    """Define the price for user <id>"""
-    config.logger.info("*** Start processing id %s ***", id)
-
-    # Get list of prices and randomly choose one
-    prices = listprices("prices")
-    config.logger.debug("Prices list: %s", prices)
-    price = random.choice(prices)
-    config.logger.info("Price win: %s", price)
-
-    # Add a watermark with the id to the image using Imagemagick convert
-    cmd = "convert prices/" + \
-          price + \
-          " -background Khaki label:'id:" + \
-          id + \
-          "' -gravity center -append " + config.p.conf_file.get_p_tmpfile() + \
-          "/" + id + "_" + price
-
-    config.logger.info("Command: %s", cmd)
-
+@app.route("/get_price/<id>")
+def get_price(id):
     try:
-        subprocess.check_call(cmd.split())
-        config.logger.info("Image %s generated", id + "_" + price)
-    except FileNotFoundError:
-        err = "Cannot find Imagemagick convert. " \
-              "Please make sure Imagemagick is installed and convert " \
-              "is in your path."
+        """Send the price of the user"""
 
-        config.logger.error(err)
-        print(err)
+        conn = sqlite3.connect('database.db')
+        c = conn.cursor()
 
-    # Read the watermarked image and encore it to base64
-    with open(config.p.conf_file.get_p_tmpfile() + "/" +
-              id + "_" + price, mode='rb') as file:
+        try:
+            c.execute("CREATE TABLE users (id INT, image TEXT)")
+        except:
+            pass
 
-        file_content = file.read()
-        img = base64.b64encode(file_content)
+        c.execute("SELECT image FROM users WHERE users.id = " + str(id))
+        response = c.fetchone()
+        data = 0
+        if response == None:
+            data = {"msg": "noprice"}
+        else:
+            data = {"msg": response[0]}
+        resp = jsonify(data)
+        resp.status_code = 200
 
-    config.logger.debug("Img: %s", img)
+        conn.commit()
+        conn.close()
+        add_headers(resp)
+        return resp
+    except:
+        resp = jsonify({"msg": "bug"})
+        resp.status_code = 500
+        return resp
 
-    # Add latency on the service to simulate a long process
-    time.sleep(int(config.p.conf_file.get_p_tempo()))
+@app.route("/set_price/<id>/<price>")
+def set_price(id, price):
+    try:
+        """Set the price of the user"""
+        conn = sqlite3.connect('database.db')
+        c = conn.cursor()
+        try:
+            c.execute("CREATE TABLE users (id INT, image TEXT)")
+        except:
+            pass
 
-    data = {"price": price, "img": img.decode("ascii")}
-    resp = jsonify(data)
-    resp.status_code = 200
-    config.logger.info("*** End processing id %s ***", id)
-    add_headers(resp)
-    return resp
-
+        c.execute("DELETE FROM users WHERE users.id = " + str(id))
+        c.execute("INSERT INTO users VALUES(" + str(id) + ",'" + price + "')")
+        conn.commit()
+        conn.close()
+        data = {"msg": "ok"}
+        resp = jsonify(data)
+        add_headers(resp)
+        resp.status_code = 200
+        return resp
+    except:
+        resp = jsonify({"msg": "bug"})
+        resp.status_code = 500
+        return resp
 
 @app.route("/shutdown", methods=["POST"])
 def shutdown():

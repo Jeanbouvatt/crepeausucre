@@ -301,3 +301,20 @@
 2016-11-18 12:09:33,196 :: INFO :: Command: convert prices/tool.jpg -background Khaki label:'id:1' -gravity center -append /tmp/1_tool.jpg
 2016-11-18 12:09:33,330 :: INFO :: Image 1_tool.jpg generated
 2016-11-18 12:09:38,339 :: INFO :: *** End processing id 1 ***
+2017-01-17 11:50:24,726 :: INFO :: Starting Microservice p
+2017-01-17 11:50:24,987 :: INFO :: Starting Microservice p
+2017-01-17 11:51:03,298 :: INFO :: Starting Microservice p
+2017-01-17 11:51:05,502 :: INFO :: Starting Microservice p
+2017-01-17 11:51:05,626 :: INFO :: Starting Microservice p
+2017-01-17 11:51:31,852 :: INFO :: Starting Microservice p
+2017-01-17 11:52:07,113 :: INFO :: Starting Microservice p
+2017-01-17 11:52:19,310 :: INFO :: Starting Microservice p
+2017-01-17 11:52:33,512 :: INFO :: Starting Microservice p
+2017-01-17 11:53:00,079 :: INFO :: Starting Microservice p
+2017-01-17 11:53:00,208 :: INFO :: Starting Microservice p
+2017-01-17 11:53:11,400 :: INFO :: Starting Microservice p
+2017-01-17 11:53:31,619 :: INFO :: Starting Microservice p
+2017-01-17 11:53:37,790 :: INFO :: Starting Microservice p
+2017-01-17 11:53:44,998 :: INFO :: Starting Microservice p
+2017-01-17 11:54:00,040 :: INFO :: Starting Microservice p
+2017-01-17 11:54:00,167 :: INFO :: Starting Microservice p
