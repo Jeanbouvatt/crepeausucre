@@ -55,3 +55,18 @@
 2017-01-16 12:12:17,172 :: INFO :: *** Start processing id 17 ***
 2017-01-16 12:12:17,173 :: INFO :: *** 17 already played ***
 2017-01-16 12:12:17,173 :: INFO :: *** End processing id 17 ***
+2017-01-17 14:40:28,551 :: INFO :: Starting Microservice s
+2017-01-17 14:40:28,675 :: INFO :: Starting Microservice s
+2017-01-17 14:40:40,162 :: INFO :: *** Start processing id 4888 ***
+2017-01-17 14:40:40,163 :: INFO :: *** 4888 has not played yet ***
+2017-01-17 14:40:40,163 :: INFO :: *** End processing id 4888 ***
+2017-01-17 14:40:43,025 :: INFO :: *** Start processing id 4888 ***
+2017-01-17 14:40:43,208 :: INFO :: *** End processing id 4888 ***
+2017-01-17 14:40:54,870 :: INFO :: *** Start processing id 4888 ***
+2017-01-17 14:40:54,871 :: INFO :: *** 4888 already played ***
+2017-01-17 14:40:54,871 :: INFO :: *** End processing id 4888 ***
+2017-01-17 14:41:01,892 :: INFO :: *** Start processing id 4888 ***
+2017-01-17 14:41:01,892 :: INFO :: *** 4888 already played ***
+2017-01-17 14:41:01,893 :: INFO :: *** End processing id 4888 ***
+2017-01-17 14:41:13,002 :: INFO :: Starting Microservice s
+2017-01-17 14:41:14,157 :: INFO :: Starting Microservice s
