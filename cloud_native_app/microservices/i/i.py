@@ -25,6 +25,42 @@ app.debug = True
 config.logger = app.logger
 
 
+
+@app.route("/create/<id>/<name>/<email>")
+def api_create(id,name,email):
+    try:
+        """Create user <id>"""
+
+        conn = sqlite3.connect('database.db')
+        c = conn.cursor()
+
+        response = [[0]]
+
+        try:
+            c.execute("CREATE TABLE users (id INT, nom TEXT, email TEXT)")
+        except:
+            pass
+
+        c.execute("SELECT * FROM users WHERE users.id = " + str(id))
+        response = c.fetchone()
+        if response == None:
+            c.execute("INSERT INTO users VALUES(" + str(id) + ",'" + str(name) + "','" + str(email) + "')")
+
+        data = {"msg": "ok"}
+        resp = jsonify(data)
+        resp.status_code = 200
+
+        conn.commit()
+        conn.close()
+
+        add_headers(resp)
+        return resp
+    except:
+        resp = jsonify({"msg": "bug"})
+        resp.status_code = 500
+        return resp
+
+
 @app.route("/login/<id>")
 def api_login(id):
 
@@ -39,15 +75,21 @@ def api_login(id):
 
         try:
             c.execute("CREATE TABLE users (id INT, nom TEXT, email TEXT)")
+            api_create(0,"Default user","default@gmail.com")
+            api_create(1,"Jean Bvt","jean@gmail.com")
+            api_create(2,"Salim Abc","salim@gmail.com")
+            api_create(3,"Matthias Bp","matthias@gmail.com")
+            api_create(4,"Robin Tgh","robin@gmail.com")
+            api_create(5,"Yolo","Yola")
         except:
             pass
 
-        c.execute("SELECT COUNT(*) FROM users WHERE users.id = " + str(id))
-        response = c.fetchall()
+        c.execute("SELECT * FROM users WHERE users.id = " + str(id))
+        response = c.fetchone()
 
-        if response[0][0] == 1:
+        if response != None:
             config.logger.info("*** %s is in the database ***", id)
-            data = {"msg": "ok"}
+            data = {"msg": "ok","id": response[0], "name": response[1],"email": response[2]}
             resp = jsonify(data)
             resp.status_code = 200
         else:
@@ -66,7 +108,6 @@ def api_login(id):
         resp = jsonify({"msg": "bug"})
         resp.status_code = 500
         return resp
-
 
 @app.route("/shutdown", methods=["POST"])
 def shutdown():
