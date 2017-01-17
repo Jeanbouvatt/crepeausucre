@@ -15,6 +15,7 @@
         <h3>Êtes-vous authentifié ?</h3>
         <?php echo autenticate()? "Vous êtes enregistré dans la base de donnée" : "Vous n'êtes pas enregistré dans notre base de donnée. Veuillez choisir un identifiant valide." ?>
       </section>
+      <?php if(autenticate()) { ?>
       <section>
         <h3>Avez-vous déjà joué ?</h3>
         <?php echo !check_played()? 'Vous avez déjà joué.' : 'Vous n\'avez pas encore joué' ?>
@@ -27,6 +28,7 @@
         <h3>Résultat</h3>
         <?php echo !check_played() ? '<img src="images/' . get_price() . '" />':'Vous n\'avez pas encore joué' ?>
       </section>
+      <?php } ?>
     </main>
   </body>
 </html>
