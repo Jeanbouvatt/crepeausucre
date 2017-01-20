@@ -1,4 +1,4 @@
-group_name=VM_Group
+group_name=$1
 
 
 openstack security group create $group_name --description "Groupe de sécurité pour les VM"
