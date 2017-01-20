@@ -13,12 +13,26 @@ SECURITY=$2
 NAME=$1
 DIR=$3
 SCRIPT=$5
-echo "create service with : name : $1
+ID="[service $1 creator]"
+echo "$ID create service with : name : $1
 security group : $2
 directory to upload : $3
 key : $4
 remote script : $5"
+IP=$(openstack server list | grep $NAME | cut -d = -f 2 | cut -d '|' -f 1)
+if [ "$IP" == "" ]
+then
 openstack server create --flavor $FLAVOR --image $IMAGE --nic $NIC --security-group $SECURITY $NAME --key-name $KEY
-IP= openstack server list | grep $NAME | cut -d = -f 2
-scp -i $KEY -r $DIR ubuntu@$IP
-ssh -i ubuntu@$IP $SCRIPT 
+while [ "$IP" != "" ]
+do
+	echo "$ID waiting for end of server building"
+	sleep 3
+	IP=$(openstack server list | grep $NAME | cut -d = -f 2 | cut -d '|' -f 1)
+done
+fi
+echo "$ID : server succesfully created with ip : $IP" 
+echo "$DIR $IP"
+scp -i $KEY -r $DIR "ubuntu@$IP:~"
+echo "$ID copy finished"
+ssh -i $KEY ubuntu@"$IP" "$SCRIPT"
+echo "$ID ssh script succesfull" 
