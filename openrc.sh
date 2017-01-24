@@ -11,6 +11,7 @@
 # OpenStack API is version 2.0. For example, your cloud provider may implement
 # Image API v1.1, Block Storage API v2, and Compute API v2.0. OS_AUTH_URL is
 # only for the Identity API served through keystone.
+#export OS_AUTH_URL=http://10.11.50.26:5000/v3
 export OS_AUTH_URL=http://10.11.50.26:5000/v2.0
 echo $OS_AUTH_URL
 
