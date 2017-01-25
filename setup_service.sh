@@ -62,10 +62,10 @@ echo -e "$ID ssh script finished"
 #updating conf file if frontend.
 if [ "$1" == "frontend" ]
 then
-	while [ $(wc -l $CONF_FILE | cut -d ' ' -f 1) -ne 5 ]
+	while [ $(wc -l $CONF_FILE | cut -d ' ' -f 1) -lt 5 ]
 	do
 		echo -e "$ID Waiting for all IP to be provided"
-		sleep 3
+		sleep 10
 	done
 	scp -i $KEY_FILE $CONF_FILE "ubuntu@$IP:~/frontend/www/conf"
 	echo -e "$ID Done"
