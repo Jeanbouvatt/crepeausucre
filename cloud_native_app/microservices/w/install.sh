@@ -11,4 +11,4 @@ sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual
 sudo apt-get install docker-engine
 sudo service docker start
 sudo docker build -t microservice_w .
-sudo docker run --rm -it -p 8090:8090 microservice_w
+sudo docker run -it -p 8090:8090 microservice_w
