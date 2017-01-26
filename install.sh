@@ -1,27 +1,43 @@
 #!/bin/bash
 source ./openrc.sh
 echo $1
+RED='\033[0;31m'
+NC='\033[0m'
+ID="{$RED}[main installer]{$NC}"
 FLAVOR="m1.small"
-NIC="net-id=a992853b-b9cf-42c7-9b7e-e3e8fecd58fb"
 IMAGE=ubuntu1604
-KEY="MY_KEY.pem"
+KEY_FILE="OUR_KEY.pem"
+KEY_NAME="PRIMARY_KEY"
 SECURITY="default"
+#SUB_SECU="sub_security_group_8"
+SUB_SECU="default"
 DIR="cloud_native_app/microservices"
-
-if [ $(ls MY_KEY.pem | wc -l) != 1 ]
+NETWORK_NAME="private8"
+#setting up security
+CONF_FILE="conf"
+rm $CONF_FILE
+if [ "$1" == "reset-security" ]
 then
-openstack keypair create KEY_NAME > $KEY
-chmod 600 MY_KEY.pem
+	echo "$ID creating security group"
+	./security_group.sh $SUB_SECU
 fi
-#TODO : security things
-./setup_security.sh "sub-services"
+
+#setting up key for ssh access
+if [ ! -f $KEY_FILE ]
+then
+	echo "$ID creating new key"
+	openstack keypair create $KEY_NAME > $KEY_FILE
+	chmod 600 $KEY_FILE
+fi
+
 #creating i s b w p frontend
-echo  "calling setup service on shits and things"
-./setup_service.sh "server_i" "default" "$DIR/i" $KEY "i/install.sh" &
-./setup_service.sh "server_s" "default" $($DIR/s) $KEY_NAME $($DIR/s/install.sh) & 
-./setup_service.sh "server_b" "default" $($DIR/b) $KEY_NAME $($DIR/b/install.sh) &
-./setup_service.sh "server_w" "default" $($DIR/w) $KEY_NAME $($DIR/w/install.sh) &
-./setup_service.sh "server_p" "default" $($DIR/p) $KEY_NAME $($DIR/p/install.sh) &
-#TODO : correct front end so it can access sub-service
-./setup_service.sh "server_frontend" "default" $(cloud_native_app/frontend) $KEY_NAME $(cloud_native_app/frontend/install.sh) 
+
+# yes | ./setup_service.sh "i" $SUB_SECU "$DIR/i" $KEY_NAME $KEY_FILE "i/install.sh" $NETWORK_NAME $CONF_FILE &
+ yes | ./setup_service.sh "s" $SUB_SECU "$DIR/s" $KEY_NAME $KEY_FILE "s/install.sh" $NETWORK_NAME $CONF_FILE &
+# yes | ./setup_service.sh "b" $SUB_SECU "$DIR/b" $KEY_NAME $KEY_FILE "b/install.sh" $NETWORK_NAME $CONF_FILE &
+# yes | ./setup_service.sh "w" $SUB_SECU "$DIR/w" $KEY_NAME $KEY_FILE "w/install.sh" $NETWORK_NAME $CONF_FILE &
+# yes | ./setup_service.sh "p" $SUB_SECU "$DIR/p" $KEY_NAME $KEY_FILE "p/install.sh" $NETWORK_NAME $CONF_FILE & 
+# yes | ./setup_service.sh "frontend" default "cloud_native_app/frontend" $KEY_NAME $KEY_FILE "frontend/install.sh" $NETWORK_NAME $CONF_FILE &
+
 #TODO : setup floating ip for front end"
+echo "$ID finished"
