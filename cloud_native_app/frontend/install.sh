@@ -4,4 +4,4 @@ sudo apt-get update
 sudo apt-get install -y php apache2 php-curl libapache2-mod-php
 sudo cp -r www/* /var/www/html
 sudo rm /var/www/html/index.html
-/etc/init.d/apache2 start
+sudo /etc/init.d/apache2 start

@@ -32,11 +32,11 @@ fi
 
 #creating i s b w p frontend
 
-#yes | ./setup_service.sh "i" $SUB_SECU "$DIR/i" $KEY_NAME $KEY_FILE "i/install.sh" $NETWORK_NAME $CONF_FILE &
-#yes | ./setup_service.sh "s" $SUB_SECU "$DIR/s" $KEY_NAME $KEY_FILE "s/install.sh" $NETWORK_NAME $CONF_FILE &
-#yes | ./setup_service.sh "b" $SUB_SECU "$DIR/b" $KEY_NAME $KEY_FILE "b/install.sh" $NETWORK_NAME $CONF_FILE &
+yes | ./setup_service.sh "i" $SUB_SECU "$DIR/i" $KEY_NAME $KEY_FILE "i/install.sh" $NETWORK_NAME $CONF_FILE &
+yes | ./setup_service.sh "s" $SUB_SECU "$DIR/s" $KEY_NAME $KEY_FILE "s/install.sh" $NETWORK_NAME $CONF_FILE &
+yes | ./setup_service.sh "b" $SUB_SECU "$DIR/b" $KEY_NAME $KEY_FILE "b/install.sh" $NETWORK_NAME $CONF_FILE &
 yes | ./setup_service.sh "w" $SUB_SECU "$DIR/w" $KEY_NAME $KEY_FILE "w/install.sh" $NETWORK_NAME $CONF_FILE &
-#yes | ./setup_service.sh "p" $SUB_SECU "$DIR/p" $KEY_NAME $KEY_FILE "p/install.sh" $NETWORK_NAME $CONF_FILE & 
-#yes | ./setup_service.sh "frontend" default "cloud_native_app/frontend" $KEY_NAME $KEY_FILE "frontend/install.sh" $NETWORK_NAME $CONF_FILE
+yes | ./setup_service.sh "p" $SUB_SECU "$DIR/p" $KEY_NAME $KEY_FILE "p/install.sh" $NETWORK_NAME $CONF_FILE & 
+yes | ./setup_service.sh "frontend" default "cloud_native_app/frontend" $KEY_NAME $KEY_FILE "frontend/install.sh" $NETWORK_NAME $CONF_FILE
 
 echo "$ID finished"
