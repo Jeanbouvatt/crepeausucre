@@ -20,14 +20,14 @@ CONF_FILE=$8
 RED='\033[0;31m'
 NC='\033[0m'
 ID="$RED[service $1 creator]$NC"
-echo -e "$ID create service with : name : $1
-security group : $2
-directory to upload : $3
-key name : $4
-key file : $5
-remote script : $6
-network : $7
-configuration file for frontend : $8"
+#echo -e "$ID create service with : name : $1
+#security group : $2
+#directory to upload : $3
+#key name : $4
+#key file : $5
+#remote script : $6
+#network : $7
+#configuration file for frontend : $8"
 
 #retrieving network id
 NIC=$(openstack network list | grep $NETWORK_NAME | cut -d '|' -f 2 | cut -d ' ' -f 2)
@@ -37,11 +37,11 @@ IP=$(openstack server list | grep $NAME | cut -d = -f 2 | cut -d '|' -f 1 | cut 
 if [ "$IP" == "" ]
 then
 	openstack server create --flavor $FLAVOR --image $IMAGE --security-group $SECURITY $NAME --key-name $KEY_NAME --nic $NIC
-	echo -e "$ID server created, ongoing build"
+	echo -e "$ID openstack server created"
 	while [ "$IP" == "" ]
 	do	
-		echo -e "$ID waiting for end of server building"
-		sleep 3
+		echo -e "$ID waiting end of server building"
+		sleep 5
 		IP=$(openstack server list | grep $NAME | cut -d = -f 2 | cut -d '|' -f 1 | cut -d ',' -f 1 | cut -d ' ' -f 1)
 	done
 	echo -e "$ID : server succesfully created with ip : $IP" 
@@ -67,6 +67,7 @@ then
 		echo -e "$ID Waiting for all IP to be provided"
 		sleep 10
 	done
-	scp -i $KEY_FILE $CONF_FILE "ubuntu@$IP:~/frontend/www/conf"
+	scp -o "StrictHostKeyChecking=no" -i $KEY_FILE $CONF_FILE "ubuntu@$IP:~/frontend/www/conf"
 	echo -e "$ID Done"
+	openstack ip floating add 10.11.50.114 server-frontend
 fi
